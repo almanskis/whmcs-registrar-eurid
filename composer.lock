@@ -1,0 +1,75 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "d2e745bf9aaf42f3deded2dbc8308882",
+    "packages": [
+        {
+            "name": "agilegeeks/eurid-epp-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agilegeeks/eurid-epp-php.git",
+                "reference": "675e510c4c555af4a8c1c9fa2b4f5a4c154b59da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agilegeeks/eurid-epp-php/zipball/675e510c4c555af4a8c1c9fa2b4f5a4c154b59da",
+                "reference": "675e510c4c555af4a8c1c9fa2b4f5a4c154b59da",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "AgileGeeks\\tests\\": "src\\tests",
+                    "AgileGeeks\\EPP\\Eurid\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "ISC"
+            ],
+            "authors": [
+                {
+                    "name": "Radu Boncea",
+                    "email": "radu.boncea@gmail.com"
+                },
+                {
+                    "name": "Alex Cristian Gheorghita",
+                    "email": "cristiangheorghita1@gmail.com"
+                }
+            ],
+            "description": "An EPP client for Eurid",
+            "keywords": [
+                "domains",
+                "epp",
+                "registrar"
+            ],
+            "support": {
+                "issues": "https://github.com/agilegeeks/eurid-epp-php/issues",
+                "source": "https://github.com/agilegeeks/eurid-epp-php/tree/master"
+            },
+            "time": "2020-02-29T23:58:16+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "agilegeeks/eurid-epp-php": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
+}
