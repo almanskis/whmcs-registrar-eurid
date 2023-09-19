@@ -1,0 +1,29 @@
+{
+  "schema": "1.0",
+  "type": "whmcs-registrars",
+  "name": "eurid",
+  "license": "proprietary",
+  "category": "domains",
+  "description": {
+    "name": "EURid",
+    "tagline": ".EU domain provider.",
+    "long": "Automate .EU domains registration directly with Eurid. Available use of tryout and production environments.",
+    "features": [
+        "Separate Prodution and Tryout details fields for testing and production work",
+        "Available WHMCS Registrar Commands: Register, Transfer, Renew, Modify Contact Details, Get EPP Code, Cancel Epp Code, Request Delete, Cancel Delete Request, Sync"
+    ]
+  },
+  "logo": {
+    "filename": "logo.png"
+  },
+  "support": {
+    "homepage": "https:\/\/github.com\/almanskis\/whmcs-registrar-eurid",
+    "email": "almantasgirskis@gmail.com"
+  },
+  "authors": [
+    {
+      "name": "Almantas Girskis, BaCloud",
+      "homepage": "https:\/\/github.com\/almanskis\/whmcs-registrar-eurid"
+    }
+  ]
+}
