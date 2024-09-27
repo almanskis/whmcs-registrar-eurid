@@ -9,7 +9,7 @@ class EPP_Protocol
         $result = '';
 
         // Loop reading and checking info to see if we hit timeout
-        $info       = stream_get_meta_data($socket);
+        $info = stream_get_meta_data($socket);
         $time_start = microtime(true);
 
         while (!$info['timed_out'] && !feof($socket)) {
@@ -29,7 +29,7 @@ class EPP_Protocol
             }
 
             // Update metadata
-            $info     = stream_get_meta_data($socket);
+            $info = stream_get_meta_data($socket);
             $time_end = microtime(true);
             if (($time_end - $time_start) > 10000000) {
                 throw new \Exception('Timeout while reading from EPP Server');
@@ -48,7 +48,7 @@ class EPP_Protocol
     static function _fwrite_nb($socket, $buffer, $length)
     {
         // Loop writing and checking info to see if we hit timeout
-        $info       = stream_get_meta_data($socket);
+        $info = stream_get_meta_data($socket);
         $time_start = microtime(true);
 
         $pos = 0;
@@ -72,7 +72,7 @@ class EPP_Protocol
             }
 
             // Update metadata
-            $info     = stream_get_meta_data($socket);
+            $info = stream_get_meta_data($socket);
             $time_end = microtime(true);
             if (($time_end - $time_start) > 10000000) {
                 throw new \Exception('Timeout while writing to EPP Server');
@@ -99,10 +99,9 @@ class EPP_Protocol
 
         // Unpack first 4 bytes which is our length
         $unpacked = unpack('N', $hdr);
-        $length   = $unpacked[1];
+        $length = $unpacked[1];
         if ($length < 5) {
             throw new \Exception(sprintf('Got a bad frame header length of %d bytes from peer', $length));
-
         } else {
             $length -= 4; // discard the length of the header itself
             // Read frame
@@ -121,7 +120,7 @@ class EPP_Protocol
     {
         // Grab XML length & add on 4 bytes for the counter
         $length = strlen($xml) + 4;
-        $res    = EPP_Protocol::_fwrite_nb($socket, pack('N', $length) . $xml, $length);
+        $res = EPP_Protocol::_fwrite_nb($socket, pack('N', $length) . $xml, $length);
         // Check our write matches
         if ($length != $res) {
             throw new \Exception("Short write when sending XML");

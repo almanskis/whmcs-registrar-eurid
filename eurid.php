@@ -23,7 +23,7 @@ function eurid_MetaData()
 {
     return [
         'DisplayName' => 'EURid (EU domains)',
-        'APIVersion'  => '1.0',
+        'APIVersion'  => '1.1',
     ];
 }
 
@@ -66,13 +66,13 @@ function eurid_getConfigArray()
             'FriendlyName' => 'Production Billing contact',
             'Type'         => 'text',
             'Default'      => '',
-            'Description'  => 'Production billing contact. eg. c1111111',
+            'Description'  => 'Production billing contact. eg. c1234567',
         ],
         'productionTech' => [
             'FriendlyName' => 'Production Technical contact',
             'Type'         => 'text',
             'Default'      => '',
-            'Description'  => 'Production technical contact. eg. c1111111',
+            'Description'  => 'Production technical contact. eg. c1234567',
         ],
         'tryoutUrl' => [
             'FriendlyName' => 'Tryout URL',
@@ -105,13 +105,13 @@ function eurid_getConfigArray()
             'FriendlyName' => 'Tryout Billing contact',
             'Type'         => 'text',
             'Default'      => '',
-            'Description'  => 'Tryout billing contact. eg. c1111111',
+            'Description'  => 'Tryout billing contact. eg. c1234567',
         ],
         'tryoutTech' => [
             'FriendlyName' => 'Tryout Technical contact',
             'Type'         => 'text',
             'Default'      => '',
-            'Description'  => 'Tryout technical contact. eg. c1111111',
+            'Description'  => 'Tryout technical contact. eg. c1234567',
         ],
         'debug' => [
             'FriendlyName' => 'Debug Mode',
@@ -278,7 +278,7 @@ function eurid_TransferDomain($params)
         if (empty($registrantId)) {
             $action = "{$function}__contact_create";
 
-            $requestData = Contact::formatDetailsForUpdate($registrantId, $params);
+            $requestData = Contact::formatDetailsForCreate($params);
 
             $response = Contact::create($client, $requestData);
 

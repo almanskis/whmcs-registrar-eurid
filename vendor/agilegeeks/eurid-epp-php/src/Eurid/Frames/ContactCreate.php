@@ -39,6 +39,7 @@ class ContactCreate extends Command
                 <contact-ext:type>%s</contact-ext:type>
                 <contact-ext:lang>en</contact-ext:lang>
                 <contact-ext:naturalPerson>%s</contact-ext:naturalPerson>
+                %s
             </contact-ext:create>
         </extension>
         <clTRID>%s</clTRID>
@@ -59,8 +60,15 @@ XML;
         $fax,
         $email,
         $contact_type,
-        $natural_person
+        $natural_person,
+        $country_of_citizenship
     ) {
+        $country_of_citizenship_template = '';
+
+        if ($country_of_citizenship != null) {
+            $country_of_citizenship_template = "<contact-ext:countryOfCitizenship>{$country_of_citizenship}</contact-ext:countryOfCitizenship>";
+        }
+
         $this->xml = sprintf(
             self::TEMPLATE,
             htmlentities($name),
@@ -77,6 +85,7 @@ XML;
             $email,
             $contact_type,
             $natural_person,
+            $country_of_citizenship_template,
             $this->clTRID()
         );
     }
@@ -86,7 +95,7 @@ XML;
         parent::getResult($dom);
 
         $creData_node = $dom->getElementsByTagName('creData')->item(0);
-        $contact_id   = $creData_node->getElementsByTagName('id')->item(0)->firstChild->textContent;
+        $contact_id = $creData_node->getElementsByTagName('id')->item(0)->firstChild->textContent;
 
         return $contact_id;
     }

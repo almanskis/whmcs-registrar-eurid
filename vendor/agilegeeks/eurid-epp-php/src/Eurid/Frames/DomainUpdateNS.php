@@ -25,7 +25,7 @@ XML;
         $_add = '';
         $_rem = '';
 
-        if (!empty($add)) {
+        if (! empty($add)) {
             $_add  = "<domain:add>".PHP_EOL;
             $_add .= "    <domain:ns>".PHP_EOL;
             
@@ -33,7 +33,7 @@ XML;
                 $_add .= "        <domain:hostAttr>".PHP_EOL;
                 $_add .= "            <domain:hostName>{$k}</domain:hostName>".PHP_EOL;
 
-                if (!empty($a['ips'])) {
+                if (! empty($a['ips'])) {
                     foreach ($a['ips'] as $ip) {
                         $ip_version = $this->detect_ip_version($ip);
                         $_add .= "            <domain:hostAddr ip=\"{$ip_version}\">{$ip}</domain:hostAddr>".PHP_EOL;
@@ -47,17 +47,18 @@ XML;
             $_add .= "</domain:add>".PHP_EOL;
         }
 
-        if (!empty($rem)) {
+        if (! empty($rem)) {
             $_rem  = "<domain:rem>".PHP_EOL;
             $_rem .= "    <domain:ns>".PHP_EOL;
+
             foreach ($rem as $k => $r) {
                 $_rem .= "        <domain:hostAttr>".PHP_EOL;
                 $_rem .= "            <domain:hostName>{$k}</domain:hostName>".PHP_EOL;
 
-                if (!empty($r['ips'])) {
-                    $ip_version = $this->detect_ip_version($ip);
+                if (! empty($r['ips'])) {
                     foreach ($r['ips'] as $ip) {
-                        $_rem.= "            <domain:hostAddr ip=\"{$ip_version}\">{$ip}</domain:hostAddr>".PHP_EOL;
+                        $ip_version = $this->detect_ip_version($ip);
+                        $_rem .= "            <domain:hostAddr ip=\"{$ip_version}\">{$ip}</domain:hostAddr>".PHP_EOL;
                     }
                 }
 
@@ -91,8 +92,8 @@ XML;
     function getResult($dom)
     {
         parent::getResult($dom);
-        
-        return (object)[];
+
+        return (object) [];
     }
 
 }

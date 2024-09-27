@@ -28,31 +28,31 @@ XML;
         $_str = '';
 
         if (count($add) > 0) {
-            $_str = "<secDNS:add>".PHP_EOL;
+            $_str = "<secDNS:add>" . PHP_EOL;
 
             foreach ($add as $a) {
-                $_str .= "    <secDNS:keyData>".PHP_EOL;
-                $_str .= "        <secDNS:flags>{$a->flags}</secDNS:flags>".PHP_EOL;
-                $_str .= "        <secDNS:protocol>{$a->protocol}</secDNS:protocol>".PHP_EOL;
-                $_str .= "        <secDNS:alg>{$a->alg}</secDNS:alg>".PHP_EOL;
-                $_str .= "        <secDNS:pubKey>{$a->pubKey}</secDNS:pubKey>".PHP_EOL;
+                $_str .= "    <secDNS:keyData>" . PHP_EOL;
+                $_str .= "        <secDNS:flags>{$a->flags}</secDNS:flags>" . PHP_EOL;
+                $_str .= "        <secDNS:protocol>{$a->protocol}</secDNS:protocol>" . PHP_EOL;
+                $_str .= "        <secDNS:alg>{$a->alg}</secDNS:alg>" . PHP_EOL;
+                $_str .= "        <secDNS:pubKey>{$a->pubKey}</secDNS:pubKey>" . PHP_EOL;
                 $_str .= "    </secDNS:keyData>".PHP_EOL;
             }
 
-            $_str .= "</secDNS:add>".PHP_EOL;
-        } else if (count($rem) > 0) {
-            $_str = "<secDNS:rem>".PHP_EOL;
+            $_str .= "</secDNS:add>" . PHP_EOL;
+        } elseif (count($rem) > 0) {
+            $_str = "<secDNS:rem>" . PHP_EOL;
 
             foreach ($rem as $r) {
-                $_str .= "    <secDNS:keyData>".PHP_EOL;
-                $_str .= "        <secDNS:flags>{$r->flags}</secDNS:flags>".PHP_EOL;
-                $_str .= "        <secDNS:protocol>{$r->protocol}</secDNS:protocol>".PHP_EOL;
-                $_str .= "        <secDNS:alg>{$r->alg}</secDNS:alg>".PHP_EOL;
-                $_str .= "        <secDNS:pubKey>{$r->pubKey}</secDNS:pubKey>".PHP_EOL;
-                $_str .= "    </secDNS:keyData>".PHP_EOL;
+                $_str .= "    <secDNS:keyData>" . PHP_EOL;
+                $_str .= "        <secDNS:flags>{$r->flags}</secDNS:flags>" . PHP_EOL;
+                $_str .= "        <secDNS:protocol>{$r->protocol}</secDNS:protocol>" . PHP_EOL;
+                $_str .= "        <secDNS:alg>{$r->alg}</secDNS:alg>" . PHP_EOL;
+                $_str .= "        <secDNS:pubKey>{$r->pubKey}</secDNS:pubKey>" . PHP_EOL;
+                $_str .= "    </secDNS:keyData>" . PHP_EOL;
             }
 
-            $_str .= "</secDNS:rem>".PHP_EOL;
+            $_str .= "</secDNS:rem>" . PHP_EOL;
         }
 
         $this->xml = sprintf(
@@ -66,7 +66,7 @@ XML;
     function getResult($dom)
     {
         parent::getResult($dom);
-        
-        return (object)[];
+
+        return (object) [];
     }
 }

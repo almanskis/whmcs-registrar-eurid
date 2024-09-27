@@ -5,7 +5,7 @@ namespace Module\Registrar\Eurid\Controller;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use Module\Registrar\Eurid\Controller\Eurid;
 use AgileGeeks\EPP\Eurid\Client AS EuridClient;
-use AgileGeeks\EPP\Eurid\Exception AS EuridException;
+use AgileGeeks\EPP\Eurid\Eurid_Exception AS EuridException;
 
 require_once(__DIR__ . '/../../vendor/autoload.php');
 
@@ -36,6 +36,7 @@ class Contact
                 $requestData['fax'],
                 $requestData['email'],
                 $requestData['natural_person'],
+                $requestData['country_of_citizenship'],
                 $requestData['contact_type']
             );
         } catch (EuridException $e) {
@@ -86,6 +87,7 @@ class Contact
                 $requestData['fax'],
                 $requestData['email'],
                 $requestData['natural'],
+                $requestData['country_of_citizenship'],
             );
         } catch (EuridException $e) {
             throw new EuridException($e->getMessage(), $e->getCode(), $e->getReason(), $requestData, 'contact_update');
@@ -135,6 +137,7 @@ class Contact
             'fax'            => '',
             'email'          => $params['email'],
             'natural_person' => $naturalPerson,
+            'country_of_citizenship' => '', // TODO
             'contact_type'   => 'registrant'
         ];
     }
@@ -165,7 +168,8 @@ class Contact
             'phone'    => $details['Phone Number'],
             'fax'      => '',
             'email'    => $details['Email Address'],
-            'natural'  => $natural_person
+            'natural'  => $natural_person,
+            'country_of_citizenship' => '', // TODO
         ];
     }
 

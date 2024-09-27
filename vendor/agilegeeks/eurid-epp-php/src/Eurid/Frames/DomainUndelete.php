@@ -16,7 +16,7 @@ class DomainUndelete extends Command
             </domain:delete>
         </delete>
         <extension>
-            <domain-ext:delete xmlns:domain-ext='http://www.eurid.eu/xml/epp/domain-ext-2.3'>
+            <domain-ext:delete xmlns:domain-ext='http://www.eurid.eu/xml/epp/domain-ext-2.6'>
                 <domain-ext:cancel/>
             </domain-ext:delete>
         </extension>

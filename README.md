@@ -1,6 +1,3 @@
-# whmcs-registrar-eurid
-WHMCS Registrar module for EURid registrar (.eu domains)
-
 ## Information
 
 WHMCS Registrar module for EURid registrar.

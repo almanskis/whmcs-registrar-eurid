@@ -17,6 +17,6 @@ class Greeting extends Command
 
     function getResult($dom)
     {
-        return True;
+        return true;
     }
 }
