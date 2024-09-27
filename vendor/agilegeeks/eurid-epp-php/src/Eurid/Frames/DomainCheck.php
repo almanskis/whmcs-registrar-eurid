@@ -8,6 +8,7 @@ require_once(__DIR__.'/Command.php');
 
 class DomainCheck extends Command
 {
+
     const TEMPLATE = <<<XML
     <command>
         <check xmlns:domain="urn:ietf:params:xml:ns:domain-1.0">
@@ -27,7 +28,7 @@ XML;
         } else {
             if (is_array($domains)) {
                 foreach ($domains as $dn) {
-                    $domain_names_template .= "<domain:name>{$dn}</domain:name>".PHP_EOL;
+                    $domain_names_template .= "<domain:name>{$dn}</domain:name>" . PHP_EOL;
                 }
             }
         }
@@ -41,7 +42,7 @@ XML;
         $availability = [];
 
         $chkData_node = $dom->getElementsByTagName('chkData')->item(0);
-        $dn_nodes     = $chkData_node->getElementsByTagName('name');
+        $dn_nodes = $chkData_node->getElementsByTagName('name');
 
         foreach ($dn_nodes as $node) {
             $availability[$node->nodeValue] = $node->getAttribute('avail') === 'true' ? true : false;

@@ -41,36 +41,36 @@ XML;
         $domain_ns = '';
 
         if (sizeof($nameservers) > 0) {
-            $domain_ns = "<domain:ns>".PHP_EOL;
+            $domain_ns = "<domain:ns>" . PHP_EOL;
 
             foreach ($nameservers as $ns) {
-                $domain_ns .= "<domain:hostAttr>".PHP_EOL;
-                $domain_ns .= "<domain:hostName>{$ns[0]}</domain:hostName>".PHP_EOL;
+                $domain_ns .= "<domain:hostAttr>" . PHP_EOL;
+                $domain_ns .= "<domain:hostName>{$ns[0]}</domain:hostName>" . PHP_EOL;
 
-                if (is_null($ns[1]) === false){
-                    $domain_ns .= "<domain:hostAddr>{$ns[1]}</domain:hostAddr>".PHP_EOL;
+                if (! is_null($ns[1])) {
+                    $domain_ns .= "<domain:hostAddr>{$ns[1]}</domain:hostAddr>" . PHP_EOL;
                 }
 
-                $domain_ns .= "</domain:hostAttr>".PHP_EOL;
+                $domain_ns .= "</domain:hostAttr>" . PHP_EOL;
             }
 
-            $domain_ns .= "</domain:ns>".PHP_EOL;
+            $domain_ns .= "</domain:ns>" . PHP_EOL;
         }
 
         $contact_tech = '';
-        if ($contact_tech_cid != null){
+        if (! is_null($contact_tech_cid)) {
             $contact_tech = "<domain:contact type='tech'>{$contact_tech_cid}</domain:contact>";
         }
 
         $contact_extension = '';
-        if ($contact_onsite_cid != null || $contact_reseller_cid != null){
-            $contact_extension = "<extension><domain-ext:create xmlns:domain-ext='http://www.eurid.eu/xml/epp/domain-ext-2.3'>";
+        if (! is_null($contact_onsite_cid) || ! is_null($contact_reseller_cid)) {
+            $contact_extension = "<extension><domain-ext:create xmlns:domain-ext='http://www.eurid.eu/xml/epp/domain-ext-2.6'>";
 
-            if ($contact_onsite_cid != null){
+            if (! is_null($contact_onsite_cid)) {
                 $contact_extension .= "<domain-ext:contact type='onsite'>{$contact_onsite_cid}</domain-ext:contact>";
             }
 
-            if ($contact_reseller_cid != null){
+            if (! is_null($contact_reseller_cid)) {
                 $contact_extension .= "<domain-ext:contact type='reseller'>{$contact_reseller_cid}</domain-ext:contact>";
             }
 

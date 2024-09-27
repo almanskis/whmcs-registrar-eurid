@@ -78,8 +78,7 @@ class Client extends EPP_Client
     function greeting()
     {
         $command = new Greeting();
-        $frame   = new Frame($command);
-
+        $frame = new Frame($command);
         return $this->request($frame);
     }
 
@@ -88,7 +87,7 @@ class Client extends EPP_Client
         $this->debug("Attempting to login");
 
         $command = new Login($this->user, $this->pass);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -98,7 +97,7 @@ class Client extends EPP_Client
         $this->debug("Checking domains");
 
         $command = new DomainCheck($domains);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -114,7 +113,7 @@ class Client extends EPP_Client
         $this->debug("Getting balance info");
 
         $command = new CheckBalance();
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -124,7 +123,7 @@ class Client extends EPP_Client
         $this->debug("Getting domain details");
 
         $command = new DomainInfo($domain, $authInfo, $requestAuthInfo, $cancelAuthInfo);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -137,7 +136,7 @@ class Client extends EPP_Client
         $this->debug("Getting contact details");
 
         $command = new ContactInfo($contact);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -179,7 +178,7 @@ class Client extends EPP_Client
         $this->debug("Getting details of domain transfer");
 
         $command = new DomainTransferInfo($domain);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -244,6 +243,7 @@ class Client extends EPP_Client
         $fax,
         $email,
         $natural_person,
+        $country_of_citizenship = '',
         $contact_type = 'registrant'
     ) {
         $this->debug("Creating contact");
@@ -262,7 +262,8 @@ class Client extends EPP_Client
             $fax,
             $email,
             $contact_type,
-            $natural_person
+            $natural_person,
+            $country_of_citizenship
         );
         $frame = new Frame($command);
 
@@ -274,9 +275,10 @@ class Client extends EPP_Client
 
     function updateDNSSEC($domain, $add = [], $rem = [])
     {
-        $this->debug("updating dnssec data");
+        $this->debug("Updating dnssec data");
+
         $command = new DomainUpdateDNSSEC($domain, $add, $rem);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -284,8 +286,9 @@ class Client extends EPP_Client
     function updateNameservers($domain, $add, $rem)
     {
         $this->debug("Updating domain nameservers");
+
         $command = new DomainUpdateNS($domain, $add, $rem);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -304,7 +307,8 @@ class Client extends EPP_Client
         $phone,
         $fax,
         $email,
-        $natural_person
+        $natural_person,
+        $country_of_citizenship
     ) {
         $this->debug("Updating contact");
 
@@ -322,7 +326,8 @@ class Client extends EPP_Client
             $phone,
             $fax,
             $email,
-            $natural_person
+            $natural_person,
+            $country_of_citizenship
         );
 
         $frame = new Frame($command);
@@ -338,7 +343,7 @@ class Client extends EPP_Client
         $this->debug("Setting deletion date for the domain");
 
         $command = new DomainDelete($domain, $delDate);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -364,7 +369,7 @@ class Client extends EPP_Client
         $this->debug("Renewing the domain");
 
         $command = new DomainRenew($domain, $period, $curExpDate, $unit);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -372,9 +377,10 @@ class Client extends EPP_Client
     function request($frame)
     {
         $this->sendFrame($frame->getXML());
-        $dom          = $this->getFrame();
+        $dom = $this->getFrame();
+
         $this->result = new Response($dom);
-        $response     = $frame->getResult($dom);
+        $response = $frame->getResult($dom);
 
         return $response;
     }
@@ -384,7 +390,7 @@ class Client extends EPP_Client
         $this->debug("Logging out");
 
         $command = new Logout($this->user, $this->pass);
-        $frame   = new Frame($command);
+        $frame = new Frame($command);
 
         return $this->request($frame);
     }
@@ -437,7 +443,7 @@ class Client extends EPP_Client
     {
         if ($this->logged_in) $this->logout();
 
-        $this->debug("disconnecting from server");
+        $this->debug("Disconnecting from server");
         $this->disconnect();
     }
 }

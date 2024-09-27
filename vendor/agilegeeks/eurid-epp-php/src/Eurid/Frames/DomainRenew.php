@@ -6,7 +6,7 @@ use AgileGeeks\EPP\Eurid\Frames\Command;
 
 require_once(__DIR__.'/Command.php');
 
-class DomainRenew extends Command 
+class DomainRenew extends Command
 {
     const TEMPLATE = <<<XML
     <command>
@@ -21,7 +21,7 @@ class DomainRenew extends Command
   </command>
 XML;
 
-    function __construct($domain, $period, $curExpDate, $unit='y')
+    function __construct($domain, $period, $curExpDate, $unit = 'y')
     {
         $this->xml = sprintf(
             self::TEMPLATE,
@@ -37,7 +37,7 @@ XML;
         parent::getResult($dom);
 
         $result = new \stdClass();
-        $renData_node   = $dom->getElementsByTagName('renData')->item(0);
+        $renData_node = $dom->getElementsByTagName('renData')->item(0);
         $result->exDate = $renData_node->getElementsByTagName('exDate')->item(0)->firstChild->textContent;
 
         return $result;

@@ -2,7 +2,7 @@
 
 namespace AgileGeeks\EPP\Eurid;
 
-class Exception extends \Exception
+class Eurid_Exception extends \Exception
 {
     private $reason = '';
     private $data   = [];

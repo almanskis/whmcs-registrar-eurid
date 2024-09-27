@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/agilegeeks/eurid-epp-php.git",
-                "reference": "675e510c4c555af4a8c1c9fa2b4f5a4c154b59da"
+                "reference": "80da2e2dd01b3e8e0036116203786963469ad773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agilegeeks/eurid-epp-php/zipball/675e510c4c555af4a8c1c9fa2b4f5a4c154b59da",
-                "reference": "675e510c4c555af4a8c1c9fa2b4f5a4c154b59da",
+                "url": "https://api.github.com/repos/agilegeeks/eurid-epp-php/zipball/80da2e2dd01b3e8e0036116203786963469ad773",
+                "reference": "80da2e2dd01b3e8e0036116203786963469ad773",
                 "shasum": ""
             },
             "require": {

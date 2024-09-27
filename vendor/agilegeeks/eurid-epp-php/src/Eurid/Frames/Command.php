@@ -2,7 +2,7 @@
 
 namespace AgileGeeks\EPP\Eurid\Frames;
 
-use AgileGeeks\EPP\Eurid\Exception;
+use AgileGeeks\EPP\Eurid\Eurid_Exception;
 use AgileGeeks\EPP\Eurid\Response;
 
 require_once(__DIR__.'/../Exception.php');
@@ -36,17 +36,15 @@ abstract class Command
     function getResult($dom)
     {
         $response = new Response($dom);
-        if (
-            $response->code() != '1000' 
-            && $response->code() != '1500' 
-            && $response->code() != '1001'
-        ) {
+
+        if (! in_array($response->code(), ['1000', '1001', '1500'])) {
             $message = $response->message();
+
             if ($response->detailed_message() != '') {
                 $message .= ": " . $response->detailed_message();
             }
 
-            throw new Exception($message, $response->code());
+            throw new Eurid_Exception($message, $response->code());
         }
     }
 

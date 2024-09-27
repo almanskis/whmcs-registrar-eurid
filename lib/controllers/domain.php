@@ -7,7 +7,7 @@ require_once(__DIR__ . '/../../vendor/autoload.php');
 use DateTime;
 use Illuminate\Database\Capsule\Manager as Capsule;
 use AgileGeeks\EPP\Eurid\Client AS EuridClient;
-use AgileGeeks\EPP\Eurid\Exception AS EuridException;
+use AgileGeeks\EPP\Eurid\Eurid_Exception AS EuridException;
 
 class Domain
 {
